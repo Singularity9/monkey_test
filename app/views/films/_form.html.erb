@@ -1,20 +1,64 @@
-<%= simple_form_for(@film) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :film_summary %>
-    <%= f.input :film_year %>
-    <%= f.input :is_released_netflix %>
-    <%= f.input :is_released_amazon_stream %>
-    <%= f.input :is_released_disc %>
-    <%= f.input :netlifx_link %>
-    <%= f.input :amazon_stream_link %>
-    <%= f.input :disc_link %>
-    <%= f.association :user %>
+<%= form_for @film, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :title, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :film_summary, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :film_summary, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :film_year, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :film_year, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :is_released_netflix, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :is_released_netflix, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :is_released_amazon_stream, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :is_released_amazon_stream, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :is_released_disc, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :is_released_disc, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :netlifx_link, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :netlifx_link, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :amazon_stream_link, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :amazon_stream_link, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :disc_link, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :disc_link, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  films_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

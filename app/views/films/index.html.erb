@@ -1,25 +1,28 @@
-<h1>Listing films</h1>
-
-<table>
+<%- model_class = Film -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Film %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Film summary</th>
-      <th>Film year</th>
-      <th>Is released netflix</th>
-      <th>Is released amazon stream</th>
-      <th>Is released disc</th>
-      <th>Netlifx link</th>
-      <th>Amazon stream link</th>
-      <th>Disc link</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:film_summary) %></th>
+      <th><%= model_class.human_attribute_name(:film_year) %></th>
+      <th><%= model_class.human_attribute_name(:is_released_netflix) %></th>
+      <th><%= model_class.human_attribute_name(:is_released_amazon_stream) %></th>
+      <th><%= model_class.human_attribute_name(:is_released_disc) %></th>
+      <th><%= model_class.human_attribute_name(:netlifx_link) %></th>
+      <th><%= model_class.human_attribute_name(:amazon_stream_link) %></th>
+      <th><%= model_class.human_attribute_name(:disc_link) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @films.each do |film| %>
       <tr>
+        <td><%= film.id %></td>
         <td><%= film.title %></td>
         <td><%= film.film_summary %></td>
         <td><%= film.film_year %></td>
@@ -29,15 +32,21 @@
         <td><%= film.netlifx_link %></td>
         <td><%= film.amazon_stream_link %></td>
         <td><%= film.disc_link %></td>
-        <td><%= film.user %></td>
-        <td><%= link_to 'Show', film %></td>
-        <td><%= link_to 'Edit', edit_film_path(film) %></td>
-        <td><%= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l film.created_at, format: :long %></td>
+        <td>
+          <%= link_to film_path(film), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to film_path(film), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Film', new_film_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_film_path,
+            :class => 'btn btn-primary' %>
