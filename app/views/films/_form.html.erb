@@ -1,0 +1,20 @@
+<%= simple_form_for(@film) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :film_summary %>
+    <%= f.input :film_year %>
+    <%= f.input :is_released_netflix %>
+    <%= f.input :is_released_amazon_stream %>
+    <%= f.input :is_released_disc %>
+    <%= f.input :netlifx_link %>
+    <%= f.input :amazon_stream_link %>
+    <%= f.input :disc_link %>
+    <%= f.association :user %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
