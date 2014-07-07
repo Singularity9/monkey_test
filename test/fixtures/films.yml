@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  film_summary: MyText
+  film_year: 1
+  is_released_netflix: 
+  is_released_amazon_stream: 
+  is_released_disc: false
+  netlifx_link: MyString
+  amazon_stream_link: MyString
+  disc_link: MyString
+  user_id: 
+
+two:
+  title: MyString
+  film_summary: MyText
+  film_year: 1
+  is_released_netflix: 
+  is_released_amazon_stream: 
+  is_released_disc: false
+  netlifx_link: MyString
+  amazon_stream_link: MyString
+  disc_link: MyString
+  user_id: 
